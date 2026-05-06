@@ -11,7 +11,8 @@ export default function PageLoader() {
 
   return (
     <div className={`page-loader${hidden ? ' hidden' : ''}`}>
-      <div>
+      {/* letters spread in the same layout as the hero AMNT */}
+      <div className="loader-letters-wrap">
         {'AMNT'.split('').map((letter, i) => (
           <span key={i} className="loader-letter">{letter}</span>
         ))}

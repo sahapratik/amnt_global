@@ -2,9 +2,10 @@
 import { useEffect, useRef } from 'react';
 
 export default function Hero() {
-  const quadRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const quadRefs   = useRef<(HTMLDivElement | null)[]>([]);
   const letterRefs = useRef<(HTMLSpanElement | null)[]>([]);
 
+  // Trigger entrance animations after loader
   useEffect(() => {
     const timer = setTimeout(() => {
       quadRefs.current.forEach(q => q?.classList.add('visible'));
@@ -21,7 +22,7 @@ export default function Hero() {
       const sy = window.scrollY;
       quadRefs.current.forEach((q, i) => {
         if (!q) return;
-        const dir = i < 2 ? -1 : 1;
+        const dir   = i < 2 ? -1 : 1;
         const speed = 0.06 + i * 0.015;
         q.style.transform = `scale(1) translateY(${sy * speed * dir}px)`;
       });
@@ -36,6 +37,7 @@ export default function Hero() {
 
   return (
     <section className="hero" id="hero" aria-label="AMNT Hero">
+      {/* Four coloured quadrants */}
       {[0, 1, 2, 3].map(i => (
         <div
           key={i}
@@ -43,6 +45,10 @@ export default function Hero() {
           ref={el => { quadRefs.current[i] = el; }}
         />
       ))}
+
+      {/* Gradient overlay — darkens the light quads at the bottom so
+          the white tagline text is legible on ALL four backgrounds */}
+      <div className="hero-bottom-overlay" aria-hidden="true" />
 
       {/* AMNT letters across quadrant boundary */}
       <div className="hero-letters" aria-hidden="true">
@@ -65,7 +71,7 @@ export default function Hero() {
         <a href="#collections" className="hero-cta">Explore Collection</a>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Scroll indicator (desktop only) */}
       <div className="scroll-indicator" aria-hidden="true">
         <div className="scroll-line" />
         <span className="scroll-text">Scroll</span>
