@@ -179,8 +179,8 @@ body {
 .hero-letter.visible { opacity: 1; transform: scale(1) translateY(0); }
 .hero-letter:nth-child(1) { color: var(--offwhite); transition-delay: .55s; }
 .hero-letter:nth-child(2) { color: var(--offwhite); transition-delay: .70s; }
-.hero-letter:nth-child(3) { color: var(--oxblood);  transition-delay: .85s; }
-.hero-letter:nth-child(4) { color: var(--oxblood);  transition-delay:1.00s; }
+.hero-letter:nth-child(3) { color: var(--offwhite); transition-delay: .85s; }
+.hero-letter:nth-child(4) { color: var(--offwhite); transition-delay:1.00s; }
 
 .hero-tagline {
   position: absolute;
