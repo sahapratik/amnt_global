@@ -194,11 +194,7 @@ body {
   font-size: clamp(13px,1.8vw,21px);
   font-style: italic; font-weight: 300;
   letter-spacing: .07em; color: var(--offwhite); line-height: 1.85;
-  text-shadow:
-    0 0 1px rgba(0,0,0,1),
-    0 1px 2px rgba(0,0,0,1),
-    0 2px 8px rgba(0,0,0,.95),
-    0 4px 22px rgba(0,0,0,.75);
+  text-shadow: 0 2px 18px rgba(0,0,0,.52);
 }
 .hero-cta {
   display: inline-block; margin-top: 28px;
@@ -342,15 +338,28 @@ body {
 
 /* ─── CRAFT SECTION ─── */
 .craft-section { background: var(--oxblood); padding: clamp(60px,10vh,120px) clamp(24px,6vw,80px); }
+
+/* Base states via CSS so hover pseudo-class can override them */
+.craft-icon {
+  color: rgba(183,132,132,.72);
+  margin-bottom: 14px;
+  transition: color .4s ease;
+}
+.craft-accent-line {
+  width: 32px; height: 1px;
+  background: var(--rose); opacity: .5;
+  margin-bottom: 14px;
+  transition: width .5s cubic-bezier(.22,1,.36,1), opacity .4s;
+}
 .craft-card-inner {
-  padding: 28px 24px; border: 1px solid rgba(183,132,132,.1);
-  transition: border-color .4s, background .4s, transform .4s cubic-bezier(.22,1,.36,1);
+  padding: 28px 4px;
+  transition: transform .45s cubic-bezier(.22,1,.36,1), opacity .3s;
 }
 .craft-card-inner:hover {
-  border-color: rgba(183,132,132,.35);
-  background: rgba(255,255,255,.03);
-  transform: translateY(-6px);
+  transform: translateY(-8px);
 }
+.craft-card-inner:hover .craft-icon { color: var(--offwhite); }
+.craft-card-inner:hover .craft-accent-line { width: 56px; opacity: 1; }
 
 /* ─── COLLECTION GRID ─── */
 .collection-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; background: var(--charcoal); }
@@ -442,12 +451,13 @@ footer { background: var(--charcoal); }
 
 /* Small tablet / large phone */
 @media (max-width: 768px) {
-  /* Fix: icons-only flex child aligns right */
-  .navbar { justify-content: flex-end; padding: 18px 22px; }
+  /* Hamburger is now on the LEFT, search+bag on the RIGHT.
+     space-between (default) naturally separates them with logo centred. */
+  .navbar { justify-content: space-between; padding: 18px 22px; }
   .navbar.scrolled { padding: 13px 22px; }
 
-  /* Shrink logo so "T" clears the search icon */
-  .nav-logo { font-size: 16px; letter-spacing: .26em; }
+  /* Logo can now be full-size — no T/search-icon collision */
+  .nav-logo { font-size: 19px; letter-spacing: .42em; }
 
   .hero-tagline {
     white-space: normal; width: 88%;
@@ -470,10 +480,10 @@ footer { background: var(--charcoal); }
 
 /* Phone */
 @media (max-width: 480px) {
-  .navbar { padding: 16px 18px; justify-content: flex-end; }
+  .navbar { padding: 16px 18px; justify-content: space-between; }
 
-  /* Smaller logo — prevents T/search icon overlap on narrow screens */
-  .nav-logo { font-size: 14px; letter-spacing: .18em; }
+  /* Logo: readable size — T no longer clashes with search */
+  .nav-logo { font-size: 17px; letter-spacing: .34em; }
 
   /* Smaller hero letters so tagline never overlaps */
   .hero-letter  { font-size: clamp(36px,12vw,62px); }
@@ -503,7 +513,8 @@ footer { background: var(--charcoal); }
 
 /* Very small phones (SE, Galaxy A series, etc.) */
 @media (max-width: 360px) {
-  .nav-logo { font-size: 13px; letter-spacing: .14em; }
+  .navbar { padding: 14px 16px; }
+  .nav-logo { font-size: 15px; letter-spacing: .28em; }
   .hero-letter  { font-size: clamp(32px,11vw,54px); }
   .loader-letter{ font-size: clamp(32px,11vw,54px); }
   .hero-tagline p { font-size: 11px; }

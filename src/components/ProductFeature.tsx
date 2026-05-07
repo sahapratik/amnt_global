@@ -71,7 +71,7 @@ export default function ProductFeature({ id, collection, name, description, pric
     <div
       ref={visualRef}
       className={`product-visual ${layout === 'reverse' ? 'reveal-right' : 'reveal-left'}`}
-      style={{ background: t.bg, minHeight: 'clamp(320px,55vw,800px)' }}
+      style={{ minHeight: 'clamp(320px,55vw,800px)' }}
     >
       <Image
         src={images[activeImg]}
@@ -156,11 +156,14 @@ export default function ProductFeature({ id, collection, name, description, pric
   return (
     <section
       id={id}
-      className={`product-feature${layout === 'reverse' ? ' reverse-layout' : ''}`}
-      style={{ direction: layout === 'reverse' ? 'rtl' : 'ltr' }}
+      className="product-feature"
     >
-      <div style={{ direction: 'ltr' }}>{layout === 'reverse' ? infoBlock : visualBlock}</div>
-      <div style={{ direction: 'ltr' }}>{layout === 'reverse' ? visualBlock : infoBlock}</div>
+      {/* Normal:  [visual | info],   Reverse: [info | visual] */}
+      {layout === 'normal' ? (
+        <>{visualBlock}{infoBlock}</>
+      ) : (
+        <>{infoBlock}{visualBlock}</>
+      )}
     </section>
   );
 }

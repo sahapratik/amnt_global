@@ -5,6 +5,13 @@ export const metadata: Metadata = {
   title: 'AMNT — Luxury Leather Goods',
   description: 'Leather goods for modern living. Crafted with purpose. Built to last. Timeless by design.',
   keywords: 'AMNT, luxury leather, handcrafted bags, leather goods, Bangladesh, Bastion Collection, Foundry Collection',
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+    ],
+    shortcut: '/favicon.svg',
+    apple: '/favicon.svg',
+  },
   openGraph: {
     title: 'AMNT — Luxury Leather Goods',
     description: 'Leather goods for modern living. Crafted with purpose. Built to last.',
@@ -12,11 +19,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>
@@ -28,6 +31,9 @@ export default function RootLayout({
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#5A0A0A" />
+        {/* Fallback favicon link for all browsers */}
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="shortcut icon" href="/favicon.svg" />
       </head>
       <body>{children}</body>
     </html>
