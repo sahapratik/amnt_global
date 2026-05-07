@@ -7,15 +7,16 @@ export const metadata: Metadata = {
   keywords: 'AMNT, luxury leather, handcrafted bags, leather goods, Bangladesh, Bastion Collection, Foundry Collection',
   icons: {
     icon: [
-      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/amnt-favicon.png', type: 'image/png' },
     ],
-    shortcut: '/favicon.svg',
-    apple: '/favicon.svg',
+    shortcut: '/amnt-favicon.png',
+    apple:    '/amnt-favicon.png',
   },
   openGraph: {
     title: 'AMNT — Luxury Leather Goods',
     description: 'Leather goods for modern living. Crafted with purpose. Built to last.',
     type: 'website',
+    images: [{ url: '/amnt-logo.jpg', width: 1080, height: 1080, alt: 'AMNT Logo' }],
   },
 };
 
@@ -31,9 +32,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#5A0A0A" />
-        {/* Fallback favicon link for all browsers */}
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <link rel="shortcut icon" href="/favicon.svg" />
+        {/* Favicon — the AMNT logo grid image */}
+        <link rel="icon"             type="image/png" href="/amnt-favicon.png" />
+        <link rel="shortcut icon"    type="image/png" href="/amnt-favicon.png" />
+        <link rel="apple-touch-icon" type="image/png" href="/amnt-favicon.png" />
       </head>
       <body>{children}</body>
     </html>
